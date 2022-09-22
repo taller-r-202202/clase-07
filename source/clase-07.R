@@ -25,7 +25,7 @@ obs_1 %>% head(n = 5)
 obs_2 %>% head(n = 2)
 
 ## Combinar el conjunto de datos:
-data = bind_rows(obs_1,obs_2, .id = "group")
+data = bind_rows(obs_1,obs_2, .id = "base")
 data
 
 ### **1.2 Adicionar variables a un conjunto de datos**
@@ -104,15 +104,18 @@ fish_encounters %>% pivot_wider(names_from = station, values_from = seen ) %>% h
 
 us_rent_income %>% pivot_wider(names_from = variable, values_from = c(estimate, moe)) %>% head(3)                        
 
-fish_wide = fish_encounters %>% pivot_wider(names_from = station, values_from = seen ) %>% head(3)
+fish_wide = fish_encounters %>% pivot_wider(names_from = station, values_from = seen )
 
 ### **2.2 pivot_long**
 
 ## Retorno `fish_wide` al formato original:
 
 fish_wide %>% pivot_longer(cols = c(2:12), names_to = "seen")
+fish_wide %>% pivot_longer(cols = c(Release:MAW), names_to = "station_seen")
 
 ## **[3.] Aplicación: GEIH**
+
+
 
 
 
